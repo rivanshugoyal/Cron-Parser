@@ -14,11 +14,13 @@ Run the following command to build the script
 $ mvn clean install
 ```
 
-### Running the script
-Download v1.0 release from here https://github.com/victorbucutea/deliveroo/releases and execute according to specs:
-
+Run the following command to execute the script
 ```bash
-$ java -jar deliveroo-cron-parser.jar "0 0 1,2,3,15 * 1-5 /usr/bin/find"
+$ java -jar ./target/cron-parser-1.0-SNAPSHOT.jar "<cron-expression>"
+```
+Sample run:
+```bash
+$ java -jar ./target/cron-parser.jar-1.0-SNAPSHOT "0 0 1,2,3,15 * 1-5 /usr/bin/find"
   minute        0
   hour          0
   day of month  1 2 3 15

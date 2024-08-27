@@ -1,10 +1,13 @@
 package org.rivanshu.cronparser.models;
 
+import lombok.Getter;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import static java.lang.String.format;
 
+@Getter
 public class CronExpression {
 
     private final Set<Integer> minutes;
