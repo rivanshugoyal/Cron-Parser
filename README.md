@@ -6,7 +6,7 @@ for the respective time fields according to the expression.
 ### Building the script
 #### System Requirements
 
-* JDK 1.8 or above
+* JDK 17 or above
 * Maven 3.x
 
 Run the following command to build the script
