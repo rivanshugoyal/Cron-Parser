@@ -66,10 +66,12 @@ public abstract class CronFieldParser {
         int index = input.indexOf("-");
 
         int start = validateAndGet(input.substring(0, index));
-        int end = validateAndGet(input.substring(index + 1, input.length()));
+        int end = validateAndGet(input.substring(index + 1));
 
         for (int i = start; i <= end; i++) {
-            values.add(i);
+            if(isValid(i)) {
+                values.add(i);
+            }
         }
         return values;
     }
@@ -85,12 +87,16 @@ public abstract class CronFieldParser {
     private Integer validateAndGet(String value) throws CronException {
         try {
             int integerValue = Integer.parseInt(value);
-            if (integerValue >= cronFieldType.getMin() && integerValue <= cronFieldType.getMax()) {
+            if (isValid(integerValue)) {
                 return integerValue;
             }
             throw CronException.raise(INVALID_CRON_VALUE, Map.of("cronFieldType", cronFieldType.name(), "cronFieldValue", value));
         } catch (NumberFormatException e) {
             throw CronException.raise(INVALID_CRON_VALUE, Map.of("cronFieldType", cronFieldType.name(), "cronFieldValue", value));
         }
+    }
+
+    private boolean isValid(int integerValue){
+        return integerValue >= cronFieldType.getMin() && integerValue <= cronFieldType.getMax();
     }
 }
